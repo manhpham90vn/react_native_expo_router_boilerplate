@@ -29,6 +29,9 @@
     "plugins": [
       "expo-router"
     ],
-    "scheme": "react-native-expo-router-boilerplate"
+    "scheme": "react-native-expo-router-boilerplate",
+    "experiments": {
+      "tsconfigPaths": true
+    }
   }
 }
