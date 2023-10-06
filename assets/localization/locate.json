@@ -1,0 +1,30 @@
+{
+  "translations": {
+    "en": {
+      "login": "Sign In",
+      "register": "Sign Up",
+      "email": "Email",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "forgot": "Forgot password?",
+      "dont_have_account": "Dont have account?",
+      "send_mail": "Send Mail",
+      "logout": "Logout",
+      "reload": "Reload",
+      "changeTheme": "Theme"
+    },
+    "vi": {
+      "login": "Đăng nhập",
+      "register": "Đăng ký",
+      "email": "Email",
+      "password": "Mật khẩu",
+      "confirm_password": "Xác nhận mật khẩu",
+      "forgot": "Quên mật khẩu?",
+      "dont_have_account": "Không có tài khoản?",
+      "send_mail": "Gửi Mail",
+      "logout": "Đăng xuất",
+      "reload": "Tải lại",
+      "changeTheme": "Đổi theme"
+    }
+  }
+}
