@@ -20,6 +20,7 @@ module.exports = {
         foregroundImage: './assets/images/1024x1024.png',
         backgroundColor: '#ffffff',
       },
+      package: 'com.manhpham90vn.reactNativeExpoBoilerplate',
     },
     web: {
       favicon: './assets/images/1024x1024.png',
@@ -28,6 +29,11 @@ module.exports = {
     scheme: 'react-native-expo-router-boilerplate',
     experiments: {
       tsconfigPaths: true,
+    },
+    extra: {
+      eas: {
+        projectId: 'c8627f62-08d2-4fa0-9d2d-b821568ead34',
+      },
     },
   },
 };
