@@ -1,6 +1,6 @@
 import Loading from '@src/components/loading';
 import useDarkMode from '@src/hooks/useDarkMode';
-import { persistor, store } from '@src/redux/store';
+import { persister, store } from '@src/redux/store';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback, useState } from 'react';
@@ -15,7 +15,7 @@ export default () => {
     <Provider store={store}>
       <PersistGate
         loading={<Loading />}
-        persistor={persistor}
+        persistor={persister}
         onBeforeLift={onBeforeLimit}
       >
         {stateLoaded && <RootLayout />}

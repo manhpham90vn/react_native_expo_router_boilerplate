@@ -1,6 +1,7 @@
 import Configs from '@constants/configs';
 import createSagaMiddleware from '@redux-saga/core';
 import { configureStore, Middleware, Store } from '@reduxjs/toolkit';
+import { injectStore } from '@src/data/apis/client';
 import persistedReducer from '@src/redux/rootReducer';
 import rootSaga from '@src/redux/rootSaga';
 import {
@@ -51,8 +52,11 @@ export const store = configureStore({
   devTools: Configs.DEBUG,
 });
 
+injectStore(store);
+
 sagaMiddleware.run(rootSaga);
 
-export const persistor = persistStore(store);
+export const persister = persistStore(store);
+export type StorageType = typeof store;
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
