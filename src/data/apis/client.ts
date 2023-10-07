@@ -46,9 +46,10 @@ const Client = (): AxiosInstance => {
         error.response &&
         error.response.status &&
         error.response.status === 401
-      )
+      ) {
         store.dispatch(authAction.logout());
-      store.dispatch(homeAction.reset());
+        store.dispatch(homeAction.reset());
+      }
       return Promise.reject(error);
     },
   );
