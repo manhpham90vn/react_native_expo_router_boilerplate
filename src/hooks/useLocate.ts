@@ -2,7 +2,7 @@ import { translations } from '@assets/localization/locate.json';
 import { locale } from 'expo-localization';
 import { I18n } from 'i18n-js';
 
-export const I18N = (): I18n => {
+const I18N = (): I18n => {
   const i18n = new I18n(translations);
   i18n.enableFallback = true;
   i18n.defaultLocale = 'en';
