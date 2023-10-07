@@ -7,5 +7,5 @@ export const setToken = async (value: LoginResponse | null) => {
 };
 
 export const getToken = async () => {
-  return await getObjectData(StorageConstants.token);
+  return await getObjectData<LoginResponse>(StorageConstants.token);
 };

@@ -36,11 +36,11 @@ export const setStringData = async (
   }
 };
 
-export const getObjectData = async (key: string): Promise<object> => {
+export const getObjectData = async <T>(key: string): Promise<T> => {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value) {
-      const json = JSON.parse(value);
+      const json = JSON.parse(value) as T;
       return Promise.resolve(json);
     }
     const result: AppError = { errorMessage: 'empty data', errorData: null };
