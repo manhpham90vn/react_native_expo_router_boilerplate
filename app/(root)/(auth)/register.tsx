@@ -1,7 +1,6 @@
-import Text from '@src/components/text';
-import TextInput from '@src/components/textinput';
-import TouchableOpacity from '@src/components/touchableopacity';
-import View from '@src/components/view';
+import View from '@src/components/common/view';
+import PrimaryButton from '@src/components/primarybutton';
+import PrimaryEditText from '@src/components/primaryedittext';
 import { useLocate } from '@src/hooks/useLocate';
 import { useWindowDimensions } from 'react-native';
 
@@ -18,10 +17,7 @@ const Register = () => {
       <View
         style={{ marginTop: height * 0.1, marginLeft: 20, marginRight: 20 }}
       >
-        <TextInput
-          color='text'
-          backgroundColor='button'
-          fontFamily='MontserratRegular'
+        <PrimaryEditText
           style={{
             height: 50,
             borderRadius: 25,
@@ -31,10 +27,7 @@ const Register = () => {
           placeholder={locate.email}
         />
 
-        <TextInput
-          color='text'
-          backgroundColor='button'
-          fontFamily='MontserratRegular'
+        <PrimaryEditText
           style={{
             height: 50,
             borderRadius: 25,
@@ -45,10 +38,7 @@ const Register = () => {
           placeholder={locate.password}
         />
 
-        <TextInput
-          color='text'
-          backgroundColor='button'
-          fontFamily='MontserratRegular'
+        <PrimaryEditText
           style={{
             height: 50,
             borderRadius: 25,
@@ -59,8 +49,7 @@ const Register = () => {
           placeholder={locate.confirm_password}
         />
 
-        <TouchableOpacity
-          backgroundColor='button'
+        <PrimaryButton
           style={{
             marginTop: 20,
             height: 50,
@@ -69,11 +58,8 @@ const Register = () => {
             borderRadius: 25,
           }}
           onPress={handleRegister}
-        >
-          <Text color='text' fontFamily='MontserratBold'>
-            {locate.register}
-          </Text>
-        </TouchableOpacity>
+          text={locate.register}
+        />
       </View>
     </View>
   );

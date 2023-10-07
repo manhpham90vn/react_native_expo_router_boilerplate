@@ -1,7 +1,6 @@
-import Text from '@src/components/text';
-import TextInput from '@src/components/textinput';
-import TouchableOpacity from '@src/components/touchableopacity';
-import View from '@src/components/view';
+import View from '@src/components/common/view';
+import PrimaryButton from '@src/components/primarybutton';
+import PrimaryEditText from '@src/components/primaryedittext';
 import { useLocate } from '@src/hooks/useLocate';
 import { useWindowDimensions } from 'react-native';
 
@@ -22,21 +21,16 @@ const Forgot = () => {
           marginRight: 20,
         }}
       >
-        <TextInput
-          backgroundColor='button'
-          color='text'
-          fontFamily='MontserratRegular'
+        <PrimaryEditText
           style={{
             height: 50,
             borderRadius: 25,
             paddingHorizontal: 20,
           }}
-          keyboardType='email-address'
           placeholder={locate.email}
         />
 
-        <TouchableOpacity
-          backgroundColor='button'
+        <PrimaryButton
           style={{
             marginTop: 20,
             height: 50,
@@ -45,11 +39,8 @@ const Forgot = () => {
             borderRadius: 25,
           }}
           onPress={handleForgot}
-        >
-          <Text color='text' fontFamily='MontserratBold'>
-            {locate.send_mail}
-          </Text>
-        </TouchableOpacity>
+          text={locate.send_mail}
+        />
       </View>
     </View>
   );

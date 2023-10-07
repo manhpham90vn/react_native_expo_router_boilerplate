@@ -1,8 +1,9 @@
+import Text from '@src/components/common/text';
+import TouchableOpacity from '@src/components/common/touchableopacity';
+import View from '@src/components/common/view';
 import Loading from '@src/components/loading';
-import Text from '@src/components/text';
-import TextInput from '@src/components/textinput';
-import TouchableOpacity from '@src/components/touchableopacity';
-import View from '@src/components/view';
+import PrimaryButton from '@src/components/primarybutton';
+import PrimaryEditText from '@src/components/primaryedittext';
 import { LoginRequest } from '@src/data/apis/loginApi';
 import { useLocate } from '@src/hooks/useLocate';
 import { useAppDispatch, useAppSelector } from '@src/redux/hooks';
@@ -72,25 +73,18 @@ const Login = () => {
               marginRight: 20,
             }}
           >
-            <TextInput
-              backgroundColor='button'
-              color='text'
-              fontFamily='MontserratRegular'
+            <PrimaryEditText
               style={{
                 height: 50,
                 borderRadius: 25,
                 paddingHorizontal: 20,
               }}
               value={email}
-              onChangeText={(text: string) => setEmail(text)}
-              keyboardType='email-address'
               placeholder={locate.email}
+              onChangeText={setEmail}
             />
 
-            <TextInput
-              backgroundColor='button'
-              color='text'
-              fontFamily='MontserratRegular'
+            <PrimaryEditText
               style={{
                 height: 50,
                 borderRadius: 25,
@@ -98,13 +92,12 @@ const Login = () => {
                 marginTop: 20,
               }}
               value={password}
-              onChangeText={(text: string) => setPassword(text)}
-              secureTextEntry
               placeholder={locate.password}
+              onChangeText={setPassword}
+              secureTextEntry
             />
 
-            <TouchableOpacity
-              backgroundColor='button'
+            <PrimaryButton
               style={{
                 marginTop: 20,
                 height: 50,
@@ -112,12 +105,9 @@ const Login = () => {
                 alignItems: 'center',
                 borderRadius: 25,
               }}
+              text={locate.login}
               onPress={handleSignIn}
-            >
-              <Text color='text' fontFamily='MontserratBold'>
-                {locate.login}
-              </Text>
-            </TouchableOpacity>
+            />
 
             <TouchableOpacity
               style={{

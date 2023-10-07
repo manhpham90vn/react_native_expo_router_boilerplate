@@ -7,6 +7,7 @@
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [React Redux](https://react-redux.js.org/)
 - [Redux-Saga](https://redux-saga.js.org/)
+- [Redux-Persist](https://github.com/rt2zz/redux-persist)
 - [Axios](https://axios-http.com/docs/intro)
 - [Async Storage](https://github.com/react-native-async-storage/async-storage)
 - [EAS](https://docs.expo.dev/build/introduction/)

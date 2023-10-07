@@ -1,6 +1,6 @@
+import Text from '@src/components/common/text';
+import View from '@src/components/common/view';
 import Loading from '@src/components/loading';
-import Text from '@src/components/text';
-import View from '@src/components/view';
 import useDarkMode from '@src/hooks/useDarkMode';
 import { useLocate } from '@src/hooks/useLocate';
 import useTheme from '@src/hooks/useTheme';

@@ -1,5 +1,5 @@
-import { FontFamily } from '@constants//fonts';
 import { ColorName } from '@constants/colors';
+import { FontFamily } from '@constants/fonts';
 
 export type CustomProps = {
   color?: ColorName;

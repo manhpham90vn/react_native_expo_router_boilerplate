@@ -1,6 +1,5 @@
-import Text from '@src/components/text';
-import TouchableOpacity from '@src/components/touchableopacity';
-import View from '@src/components/view';
+import View from '@src/components/common/view';
+import PrimaryButton from '@src/components/primarybutton';
 import { useLocate } from '@src/hooks/useLocate';
 import { router } from 'expo-router';
 import { useWindowDimensions } from 'react-native';
@@ -26,8 +25,7 @@ const Welcome = () => {
           marginRight: 20,
         }}
       >
-        <TouchableOpacity
-          backgroundColor='button'
+        <PrimaryButton
           style={{
             marginTop: height * 0.7,
             height: 50,
@@ -35,15 +33,11 @@ const Welcome = () => {
             alignItems: 'center',
             borderRadius: 25,
           }}
+          text={locate.login}
           onPress={handleSignIn}
-        >
-          <Text color='text' fontFamily='MontserratBold'>
-            {locate.login}
-          </Text>
-        </TouchableOpacity>
+        />
 
-        <TouchableOpacity
-          backgroundColor='button'
+        <PrimaryButton
           style={{
             marginTop: 10,
             height: 50,
@@ -51,12 +45,9 @@ const Welcome = () => {
             alignItems: 'center',
             borderRadius: 25,
           }}
+          text={locate.register}
           onPress={handleSignUp}
-        >
-          <Text color='text' fontFamily='MontserratBold'>
-            {locate.register}
-          </Text>
-        </TouchableOpacity>
+        />
       </View>
     </View>
   );

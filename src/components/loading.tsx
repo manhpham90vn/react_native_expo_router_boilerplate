@@ -1,4 +1,4 @@
-import View from '@src/components/view';
+import View from '@src/components/common/view';
 import React from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 
