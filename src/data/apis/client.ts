@@ -77,7 +77,7 @@ export const GetRequest = async <T>(
       return Promise.reject(result);
     } else {
       const result: AppError = {
-        errorData: null,
+        errorData: e,
         errorMessage: 'unexpected error',
       };
       return Promise.reject(result);
@@ -109,7 +109,7 @@ export const PostRequest = async <T>(
       return Promise.reject(result);
     } else {
       const result: AppError = {
-        errorData: null,
+        errorData: e,
         errorMessage: 'unexpected error',
       };
       return Promise.reject(result);

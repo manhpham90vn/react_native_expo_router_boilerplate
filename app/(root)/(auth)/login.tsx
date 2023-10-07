@@ -8,12 +8,13 @@ import { useLocate } from '@src/hooks/useLocate';
 import { useAppDispatch, useAppSelector } from '@src/redux/hooks';
 import {
   authAction,
+  errorSelector,
   loadingSelector,
   tokenSelector,
 } from '@src/redux/slices/authSlice';
 import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { Alert, useWindowDimensions } from 'react-native';
 
 const Login = () => {
   const { height } = useWindowDimensions();
@@ -23,6 +24,7 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const token = useAppSelector(tokenSelector);
   const locate = useLocate();
+  const error = useAppSelector(errorSelector);
 
   const handleSignIn = () => {
     const payload: LoginRequest = {
@@ -38,6 +40,17 @@ const Login = () => {
   const handleSignUp = () => {
     router.push('register');
   };
+
+  useEffect(() => {
+    if (error) {
+      Alert.alert('Error', error, [
+        {
+          text: 'OK',
+          onPress: () => dispatch(authAction.resetMessage()),
+        },
+      ]);
+    }
+  }, [error]);
 
   useEffect(() => {
     if (token) {

@@ -1,10 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-import { LoginRequest, LoginResponse } from '@/data/apis/loginApi';
-import { RootState } from '@/redux/store';
-import AppData from '@/types/appData';
-import AppError from '@/types/appError';
-import AppLoading from '@/types/appLoading';
+import { LoginRequest, LoginResponse } from '@src/data/apis/loginApi';
+import { RootState } from '@src/redux/store';
+import AppData from '@src/types/appData';
+import AppError from '@src/types/appError';
+import AppLoading from '@src/types/appLoading';
 
 interface AuthState extends AppLoading, AppError, AppData<LoginResponse> {}
 

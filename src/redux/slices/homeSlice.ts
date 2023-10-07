@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-import { ListRequest, ListResponse } from '@/data/apis/listApi';
-import { UserResponse } from '@/data/apis/userApi';
-import { RootState } from '@/redux/store';
-import AppData from '@/types/appData';
-import AppError from '@/types/appError';
-import AppLoading from '@/types/appLoading';
+import { ListRequest, ListResponse } from '@src/data/apis/listApi';
+import { UserResponse } from '@src/data/apis/userApi';
+import { RootState } from '@src/redux/store';
+import AppData from '@src/types/appData';
+import AppError from '@src/types/appError';
+import AppLoading from '@src/types/appLoading';
 
 interface HomeData {
   list: ListResponse | null;
