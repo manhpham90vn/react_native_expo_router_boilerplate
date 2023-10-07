@@ -42,10 +42,13 @@ const Client = (): AxiosInstance => {
       return response;
     },
     (error) => {
-      if (error.response.status === 401) {
+      if (
+        error.response &&
+        error.response.status &&
+        error.response.status === 401
+      )
         store.dispatch(authAction.logout());
-        store.dispatch(homeAction.reset());
-      }
+      store.dispatch(homeAction.reset());
       return Promise.reject(error);
     },
   );
@@ -63,11 +66,19 @@ export const GetRequest = async <T>(
       params: requestData.queryParameters,
       headers: requestData.headers,
     });
-    const result: Response<T> = {
-      data: response.data,
-      status: response.status,
-    };
-    return Promise.resolve(result);
+    if (response && response.data && response.status) {
+      const result: Response<T> = {
+        data: response.data,
+        status: response.status,
+      };
+      return Promise.resolve(result);
+    } else {
+      const result: AppError = {
+        errorData: null,
+        errorMessage: 'unexpected error',
+      };
+      return Promise.reject(result);
+    }
   } catch (e) {
     if (axios.isAxiosError(e)) {
       const result: AppError = {
@@ -95,11 +106,19 @@ export const PostRequest = async <T>(
       { ...requestData.body },
       { headers: requestData.headers },
     );
-    const result: Response<T> = {
-      data: response.data,
-      status: response.status,
-    };
-    return Promise.resolve(result);
+    if (response && response.data && response.status) {
+      const result: Response<T> = {
+        data: response.data,
+        status: response.status,
+      };
+      return Promise.resolve(result);
+    } else {
+      const result: AppError = {
+        errorData: null,
+        errorMessage: 'unexpected error',
+      };
+      return Promise.reject(result);
+    }
   } catch (e) {
     if (axios.isAxiosError(e)) {
       const result: AppError = {
