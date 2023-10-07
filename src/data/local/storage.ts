@@ -1,30 +1,11 @@
-import {
-  clearStringData,
-  getStringData,
-  setStringData,
-} from '@src/data/local/asyncStorage';
+import { LoginResponse } from '@src/data/apis/loginApi';
+import { getObjectData, setObjectData } from '@src/data/local/asyncStorage';
 import StorageConstants from '@src/data/local/storageConstants';
 
-export const setToken = async (value: string) => {
-  return await setStringData(StorageConstants.token, value);
+export const setToken = async (value: LoginResponse | null) => {
+  return await setObjectData(StorageConstants.token, value);
 };
 
 export const getToken = async () => {
-  return await getStringData(StorageConstants.token);
-};
-
-export const clearToken = async () => {
-  return await clearStringData(StorageConstants.token);
-};
-
-export const setRefreshToken = async (value: string) => {
-  return await setStringData(StorageConstants.refreshToken, value);
-};
-
-export const getRefreshToken = async () => {
-  return await getStringData(StorageConstants.refreshToken);
-};
-
-export const clearRefreshToken = async () => {
-  return await clearStringData(StorageConstants.refreshToken);
+  return await getObjectData(StorageConstants.token);
 };

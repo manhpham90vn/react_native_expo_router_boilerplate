@@ -20,10 +20,13 @@ export const getStringData = async (key: string): Promise<string> => {
 
 export const setStringData = async (
   key: string,
-  value: string,
+  value: string | null,
 ): Promise<void> => {
   try {
-    return await AsyncStorage.setItem(key, value);
+    if (value) {
+      return await AsyncStorage.setItem(key, value);
+    }
+    return await AsyncStorage.removeItem(key);
   } catch (e) {
     const result: AppError = {
       errorData: e,
@@ -33,8 +36,33 @@ export const setStringData = async (
   }
 };
 
-export const clearStringData = async (key: string): Promise<void> => {
+export const getObjectData = async (key: string): Promise<object> => {
   try {
+    const value = await AsyncStorage.getItem(key);
+    if (value) {
+      const json = JSON.parse(value);
+      return Promise.resolve(json);
+    }
+    const result: AppError = { errorMessage: 'empty data', errorData: null };
+    return Promise.reject(result);
+  } catch (e) {
+    const result: AppError = {
+      errorData: e,
+      errorMessage: null,
+    };
+    return Promise.reject(result);
+  }
+};
+
+export const setObjectData = async (
+  key: string,
+  value: object | null,
+): Promise<void> => {
+  try {
+    if (value) {
+      const json = JSON.stringify(value);
+      return await AsyncStorage.setItem(key, json);
+    }
     return await AsyncStorage.removeItem(key);
   } catch (e) {
     const result: AppError = {

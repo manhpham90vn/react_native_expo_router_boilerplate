@@ -18,7 +18,7 @@ export const LoginApi = async (
 ): Promise<LoginResponse> => {
   try {
     const response = await PostRequest<LoginResponse>('login', request);
-    if (response.data) {
+    if (response.data && response.data.token && response.data.refreshToken) {
       return Promise.resolve(response.data);
     }
     const result: AppError = {

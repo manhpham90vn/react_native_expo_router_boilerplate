@@ -67,19 +67,11 @@ export const GetRequest = async <T>(
       params: requestData.queryParameters,
       headers: requestData.headers,
     });
-    if (response && response.data && response.status) {
-      const result: Response<T> = {
-        data: response.data,
-        status: response.status,
-      };
-      return Promise.resolve(result);
-    } else {
-      const result: AppError = {
-        errorData: null,
-        errorMessage: 'unexpected error',
-      };
-      return Promise.reject(result);
-    }
+    const result: Response<T> = {
+      data: response.data,
+      status: response.status,
+    };
+    return Promise.resolve(result);
   } catch (e) {
     if (axios.isAxiosError(e)) {
       const result: AppError = {
@@ -107,19 +99,11 @@ export const PostRequest = async <T>(
       { ...requestData.body },
       { headers: requestData.headers },
     );
-    if (response && response.data && response.status) {
-      const result: Response<T> = {
-        data: response.data,
-        status: response.status,
-      };
-      return Promise.resolve(result);
-    } else {
-      const result: AppError = {
-        errorData: null,
-        errorMessage: 'unexpected error',
-      };
-      return Promise.reject(result);
-    }
+    const result: Response<T> = {
+      data: response.data,
+      status: response.status,
+    };
+    return Promise.resolve(result);
   } catch (e) {
     if (axios.isAxiosError(e)) {
       const result: AppError = {
