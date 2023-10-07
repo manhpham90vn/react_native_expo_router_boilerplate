@@ -1,7 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { all, call, put, takeLatest } from 'redux-saga/effects';
-
-import { LoginApi, LoginRequest, LoginResponse } from '@/data/apis/loginApi';
+import { LoginApi, LoginRequest, LoginResponse } from '@src/data/apis/loginApi';
 import {
   clearRefreshToken,
   clearToken,
@@ -9,9 +7,10 @@ import {
   getToken,
   setRefreshToken,
   setToken,
-} from '@/data/local/storage';
-import { authAction } from '@/redux/slices/authSlice';
-import AppError from '@/types/appError';
+} from '@src/data/local/storage';
+import { authAction } from '@src/redux/slices/authSlice';
+import AppError from '@src/types/appError';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 function* Login(action: PayloadAction<LoginRequest>) {
   try {

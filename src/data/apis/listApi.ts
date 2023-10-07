@@ -1,5 +1,5 @@
-import { GetRequest, Request } from 'src/data/apis/client';
-import AppError from 'src/types/appError';
+import { GetRequest, Request } from '@src/data/apis/client';
+import AppError from '@src/types/appError';
 
 export interface ListRequest extends Request {
   queryParameters: {

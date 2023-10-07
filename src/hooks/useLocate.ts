@@ -1,8 +1,7 @@
+import { translations } from '@assets/localization/locate.json';
 import { locale } from 'expo-localization';
 import { I18n } from 'i18n-js';
 import { useState } from 'react';
-
-import { translations } from '../../assets/localization/locate.json';
 
 export const useTranslations = () => {
   const [locateState] = useState(locale);
@@ -27,5 +26,6 @@ export const useLocate = () => {
     logout: translation.t('logout'),
     reload: translation.t('reload'),
     changeTheme: translation.t('changeTheme'),
+    total: (total: string) => translation.t('total', { total }),
   };
 };

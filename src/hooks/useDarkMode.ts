@@ -1,7 +1,6 @@
+import { useAppSelector } from '@src/redux/hooks';
+import { Theme, themeSelector } from '@src/redux/slices/appSlice';
 import { useColorScheme as _useColorScheme } from 'react-native';
-
-import { useAppSelector } from '@/redux/hooks';
-import { Theme, themeSelector } from '@/redux/slices/appSlice';
 
 const useDarkMode = () => {
   const fallback: Theme = 'dark';

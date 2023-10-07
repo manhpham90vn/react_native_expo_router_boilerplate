@@ -11,7 +11,8 @@
       "send_mail": "Send Mail",
       "logout": "Logout",
       "reload": "Reload",
-      "changeTheme": "Theme"
+      "changeTheme": "Theme",
+      "total": "Total %{total}"
     },
     "vi": {
       "login": "Đăng nhập",
@@ -24,7 +25,8 @@
       "send_mail": "Gửi Mail",
       "logout": "Đăng xuất",
       "reload": "Tải lại",
-      "changeTheme": "Đổi theme"
+      "changeTheme": "Đổi theme",
+      "total": "Tổng %{total}"
     }
   }
 }

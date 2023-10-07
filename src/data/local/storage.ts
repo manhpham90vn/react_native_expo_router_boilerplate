@@ -2,8 +2,8 @@ import {
   clearStringData,
   getStringData,
   setStringData,
-} from '@/data/local/asyncStorage';
-import StorageConstants from '@/data/local/storageConstants';
+} from '@src/data/local/asyncStorage';
+import StorageConstants from '@src/data/local/storageConstants';
 
 export const setToken = async (value: string) => {
   return await setStringData(StorageConstants.token, value);

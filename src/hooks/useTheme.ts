@@ -1,5 +1,5 @@
-import Colors, { ColorName } from '!/colors';
-import useDarkMode from '@/hooks/useDarkMode';
+import Colors, { ColorName } from '@constants/colors';
+import useDarkMode from '@src/hooks/useDarkMode';
 
 const useTheme = (colorName: ColorName | undefined) => {
   const mode = useDarkMode();

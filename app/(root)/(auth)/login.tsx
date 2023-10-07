@@ -1,20 +1,19 @@
-import { router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
-
-import Loading from '@/components/loading';
-import Text from '@/components/text';
-import TextInput from '@/components/textinput';
-import TouchableOpacity from '@/components/touchableopacity';
-import View from '@/components/view';
-import { LoginRequest } from '@/data/apis/loginApi';
-import { useLocate } from '@/hooks/useLocate';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import Loading from '@src/components/loading';
+import Text from '@src/components/text';
+import TextInput from '@src/components/textinput';
+import TouchableOpacity from '@src/components/touchableopacity';
+import View from '@src/components/view';
+import { LoginRequest } from '@src/data/apis/loginApi';
+import { useLocate } from '@src/hooks/useLocate';
+import { useAppDispatch, useAppSelector } from '@src/redux/hooks';
 import {
   authAction,
   loadingSelector,
   tokenSelector,
-} from '@/redux/slices/authSlice';
+} from '@src/redux/slices/authSlice';
+import { router } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { useWindowDimensions } from 'react-native';
 
 const Login = () => {
   const { height } = useWindowDimensions();
@@ -70,7 +69,7 @@ const Login = () => {
                 paddingHorizontal: 20,
               }}
               value={email}
-              onChangeText={(text) => setEmail(text)}
+              onChangeText={(text: string) => setEmail(text)}
               keyboardType='email-address'
               placeholder={locate.email}
             />
@@ -86,7 +85,7 @@ const Login = () => {
                 marginTop: 20,
               }}
               value={password}
-              onChangeText={(text) => setPassword(text)}
+              onChangeText={(text: string) => setPassword(text)}
               secureTextEntry
               placeholder={locate.password}
             />

@@ -1,10 +1,9 @@
+import Text from '@src/components/text';
+import TouchableOpacity from '@src/components/touchableopacity';
+import View from '@src/components/view';
+import { useLocate } from '@src/hooks/useLocate';
 import { router } from 'expo-router';
 import { useWindowDimensions } from 'react-native';
-
-import Text from '@/components/text';
-import TouchableOpacity from '@/components/touchableopacity';
-import View from '@/components/view';
-import { useLocate } from '@/hooks/useLocate';
 
 const Welcome = () => {
   const { height } = useWindowDimensions();

@@ -1,8 +1,6 @@
+import { CustomProps } from '@src/components/customprops';
+import useTheme from '@src/hooks/useTheme';
 import { View as DefaultView } from 'react-native';
-
-import useTheme from '../hooks/useTheme';
-
-import { CustomProps } from '@/components/customprops';
 
 const View = ({
   style,

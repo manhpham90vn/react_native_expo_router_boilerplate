@@ -1,11 +1,10 @@
+import Configs from '@constants/configs';
+import { authAction } from '@src/redux/slices/authSlice';
+import { homeAction } from '@src/redux/slices/homeSlice';
+import { store } from '@src/redux/store';
+import AppData from '@src/types/appData';
+import AppError from '@src/types/appError';
 import axios, { AxiosInstance } from 'axios';
-import { authAction } from 'src/redux/slices/authSlice';
-import { homeAction } from 'src/redux/slices/homeSlice';
-import { store } from 'src/redux/store';
-import AppData from 'src/types/appData';
-import AppError from 'src/types/appError';
-
-import Configs from '../../../constants/configs';
 
 export interface Request {
   queryParameters?: object;

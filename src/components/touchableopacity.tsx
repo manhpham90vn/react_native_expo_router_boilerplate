@@ -1,8 +1,6 @@
+import { CustomProps } from '@src/components/customprops';
+import useTheme from '@src/hooks/useTheme';
 import { TouchableOpacity as DefaultTouchableOpacity } from 'react-native';
-
-import useTheme from '../hooks/useTheme';
-
-import { CustomProps } from '@/components/customprops';
 
 const TouchableOpacity = ({
   style,

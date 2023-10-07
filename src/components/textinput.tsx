@@ -1,8 +1,6 @@
+import { CustomProps } from '@src/components/customprops';
+import useTheme from '@src/hooks/useTheme';
 import { TextInput as DefaultTextInput } from 'react-native';
-
-import useTheme from '../hooks/useTheme';
-
-import { CustomProps } from '@/components/customprops';
 
 const TextInput = ({
   style,

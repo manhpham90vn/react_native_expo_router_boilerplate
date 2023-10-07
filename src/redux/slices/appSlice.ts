@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-import { RootState } from '@/redux/store';
-import AppData from '@/types/appData';
+import { RootState } from '@src/redux/store';
+import AppData from '@src/types/appData';
 
 export type Theme = 'dark' | 'light' | 'auto';
 

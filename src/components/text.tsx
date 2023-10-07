@@ -1,8 +1,6 @@
+import { CustomProps } from '@src/components/customprops';
+import useTheme from '@src/hooks/useTheme';
 import { Text as DefaultText, TextProps } from 'react-native';
-
-import useTheme from '../hooks/useTheme';
-
-import { CustomProps } from '@/components/customprops';
 
 const Text = ({
   style,

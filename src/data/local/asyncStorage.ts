@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-import AppError from '@/types/appError';
+import AppError from '@src/types/appError';
 
 export const getStringData = async (key: string): Promise<string> => {
   try {

@@ -1,5 +1,5 @@
-import { GetRequest } from 'src/data/apis/client';
-import AppError from 'src/types/appError';
+import { GetRequest } from '@src/data/apis/client';
+import AppError from '@src/types/appError';
 
 export interface UserResponse {
   email: string | null;

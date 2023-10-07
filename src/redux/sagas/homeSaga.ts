@@ -1,10 +1,9 @@
 import { PayloadAction } from '@reduxjs/toolkit';
+import { ListApi, ListRequest } from '@src/data/apis/listApi';
+import { UserApi } from '@src/data/apis/userApi';
+import { homeAction } from '@src/redux/slices/homeSlice';
+import AppError from '@src/types/appError';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { ListApi, ListRequest } from 'src/data/apis/listApi';
-
-import { UserApi } from '@/data/apis/userApi';
-import { homeAction } from '@/redux/slices/homeSlice';
-import AppError from '@/types/appError';
 
 // @ts-ignore
 function* Init(action: PayloadAction<ListRequest>) {

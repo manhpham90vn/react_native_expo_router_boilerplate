@@ -1,22 +1,21 @@
-import { Stack } from 'expo-router';
-import { useEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
-
-import Loading from '@/components/loading';
-import Text from '@/components/text';
-import View from '@/components/view';
-import useDarkMode from '@/hooks/useDarkMode';
-import { useLocate } from '@/hooks/useLocate';
-import useTheme from '@/hooks/useTheme';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { appAction } from '@/redux/slices/appSlice';
-import { authAction } from '@/redux/slices/authSlice';
+import Loading from '@src/components/loading';
+import Text from '@src/components/text';
+import View from '@src/components/view';
+import useDarkMode from '@src/hooks/useDarkMode';
+import { useLocate } from '@src/hooks/useLocate';
+import useTheme from '@src/hooks/useTheme';
+import { useAppDispatch, useAppSelector } from '@src/redux/hooks';
+import { appAction } from '@src/redux/slices/appSlice';
+import { authAction } from '@src/redux/slices/authSlice';
 import {
   homeAction,
   listSelector,
   loadingSelector,
   userSelector,
-} from '@/redux/slices/homeSlice';
+} from '@src/redux/slices/homeSlice';
+import { Stack } from 'expo-router';
+import { useEffect } from 'react';
+import { TouchableOpacity } from 'react-native';
 
 const Tab1 = () => {
   const loading = useAppSelector(loadingSelector);
@@ -105,7 +104,9 @@ const Tab1 = () => {
           backgroundColor='primary'
           style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
-          <Text color='text'>{responseList?.array?.length ?? 0}</Text>
+          <Text color='text'>
+            {locate.total((responseList?.array?.length ?? 0).toString())}
+          </Text>
         </View>
       )}
     </>

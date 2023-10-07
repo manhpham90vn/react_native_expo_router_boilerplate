@@ -1,13 +1,12 @@
-import { Redirect, Stack } from 'expo-router';
-import { useEffect } from 'react';
-
-import Loading from '@/components/loading';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import Loading from '@src/components/loading';
+import { useAppDispatch, useAppSelector } from '@src/redux/hooks';
 import {
   authAction,
   loadingSelector,
   tokenSelector,
-} from '@/redux/slices/authSlice';
+} from '@src/redux/slices/authSlice';
+import { Redirect, Stack } from 'expo-router';
+import { useEffect } from 'react';
 
 export default () => {
   const dispatch = useAppDispatch();

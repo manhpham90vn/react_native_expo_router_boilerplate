@@ -1,10 +1,9 @@
+import Text from '@src/components/text';
+import TextInput from '@src/components/textinput';
+import TouchableOpacity from '@src/components/touchableopacity';
+import View from '@src/components/view';
+import { useLocate } from '@src/hooks/useLocate';
 import { useWindowDimensions } from 'react-native';
-
-import Text from '@/components/text';
-import TextInput from '@/components/textinput';
-import TouchableOpacity from '@/components/touchableopacity';
-import View from '@/components/view';
-import { useLocate } from '@/hooks/useLocate';
 
 const Forgot = () => {
   const { height } = useWindowDimensions();

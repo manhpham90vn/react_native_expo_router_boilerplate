@@ -1,7 +1,6 @@
+import { useLocate } from '@src/hooks/useLocate';
+import useTheme from '@src/hooks/useTheme';
 import { Stack } from 'expo-router';
-
-import { useLocate } from '@/hooks/useLocate';
-import useTheme from '@/hooks/useTheme';
 
 export default () => {
   const backgroundColor = useTheme('primary');
