@@ -1,8 +1,17 @@
 import Configs from '@constants/configs';
 import createSagaMiddleware from '@redux-saga/core';
 import { configureStore, Middleware, Store } from '@reduxjs/toolkit';
-import rootReducer from '@src/redux/rootReducer';
+import persistedReducer from '@src/redux/rootReducer';
 import rootSaga from '@src/redux/rootSaga';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
 
 const sagaMiddleware = createSagaMiddleware();
 const middlewares: Middleware[] = [sagaMiddleware];
@@ -32,13 +41,18 @@ if (Configs.DEBUG && Configs.LOG_STATE) {
 }
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middlewares),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(middlewares),
   devTools: Configs.DEBUG,
 });
 
 sagaMiddleware.run(rootSaga);
 
+export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
