@@ -1,6 +1,7 @@
 import Configs from '@constants/configs';
 import { RefreshTokenApi } from '@src/data/apis/refreshTokenApi';
 import { getToken, setToken } from '@src/data/local/storage';
+import { appAction } from '@src/redux/slices/appSlice';
 import { authAction } from '@src/redux/slices/authSlice';
 import { homeAction } from '@src/redux/slices/homeSlice';
 import { StorageType } from '@src/redux/store';
@@ -23,6 +24,7 @@ const Logout = async (error: any) => {
   queues = [];
   store.dispatch(authAction.logout());
   store.dispatch(homeAction.reset());
+  store.dispatch(appAction.reset());
   return Promise.reject(error);
 };
 
