@@ -4,15 +4,23 @@ import { getToken, setToken } from '@src/data/local/storage';
 import { authAction } from '@src/redux/slices/authSlice';
 import { homeAction } from '@src/redux/slices/homeSlice';
 import { StorageType } from '@src/redux/store';
-import axios, { AxiosError, AxiosInstance } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  InternalAxiosRequestConfig,
+} from 'axios';
 
 let store: StorageType;
+let isRefreshing = false;
+let queues: InternalAxiosRequestConfig[] = [];
 
 export const injectStore = (_store: StorageType) => {
   store = _store;
 };
 
 const Logout = async (error: any) => {
+  isRefreshing = false;
+  queues = [];
   store.dispatch(authAction.logout());
   store.dispatch(homeAction.reset());
   return Promise.reject(error);
@@ -21,27 +29,37 @@ const Logout = async (error: any) => {
 const RefreshToken = async (error: AxiosError) => {
   if (error.config && error.config.url !== 'refreshToken') {
     const originalRequest = error.config;
-    const token = await getToken();
-    if (token.refreshToken) {
-      try {
-        const response = await RefreshTokenApi({
-          body: { token: token.refreshToken },
-        });
-        if (response.token) {
-          originalRequest.headers.XXX = 'Bearer ' + response.token;
-          await setToken({
-            token: response.token,
-            refreshToken: token.refreshToken,
+    if (!isRefreshing) {
+      isRefreshing = true;
+      const token = await getToken();
+      if (token.refreshToken) {
+        try {
+          const response = await RefreshTokenApi({
+            body: { token: token.refreshToken },
           });
-          return client.request(originalRequest);
-        } else {
+          if (response.token) {
+            await setToken({
+              token: response.token,
+              refreshToken: token.refreshToken,
+            });
+            queues.forEach((queue) => {
+              client.request(queue);
+            });
+            queues = [];
+            isRefreshing = false;
+            return client.request(originalRequest);
+          } else {
+            return Logout(error);
+          }
+        } catch (error) {
           return Logout(error);
         }
-      } catch (error) {
+      } else {
         return Logout(error);
       }
     } else {
-      return Logout(error);
+      const originalRequest = error.config;
+      queues.push(originalRequest);
     }
   } else {
     return Logout(error);

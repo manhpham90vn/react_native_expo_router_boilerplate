@@ -18,7 +18,7 @@
 - Multi Environment (Dev-Stg-Prod)
 - Support Dark Mode
 - i18n
-- Refresh Token (TODO)
+- Refresh Token with multi request
 - Paging (TODO)
 - [Splash Screen](https://docs.expo.dev/versions/latest/sdk/splash-screen/)
 - [Custom Font](https://docs.expo.dev/develop/user-interface/fonts/)
