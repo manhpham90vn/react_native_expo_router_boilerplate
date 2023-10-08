@@ -33,9 +33,9 @@ const RefreshToken = async (error: AxiosError) => {
     const originalRequest = error.config;
     if (!isRefreshing) {
       isRefreshing = true;
-      const token = await getToken();
-      if (token.refreshToken) {
-        try {
+      try {
+        const token = await getToken();
+        if (token.refreshToken) {
           const response = await RefreshTokenApi({
             body: { token: token.refreshToken },
           });
@@ -53,10 +53,10 @@ const RefreshToken = async (error: AxiosError) => {
           } else {
             return Logout(error);
           }
-        } catch (error) {
+        } else {
           return Logout(error);
         }
-      } else {
+      } catch {
         return Logout(error);
       }
     } else {
