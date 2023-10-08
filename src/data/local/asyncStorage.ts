@@ -9,10 +9,10 @@ export const getStringData = async (key: string): Promise<string> => {
     }
     const result: AppError = { errorMessage: 'empty data', errorData: null };
     return Promise.reject(result);
-  } catch (e) {
+  } catch {
     const result: AppError = {
-      errorData: e,
-      errorMessage: null,
+      errorData: null,
+      errorMessage: 'unexpected error',
     };
     return Promise.reject(result);
   }
@@ -27,10 +27,10 @@ export const setStringData = async (
       return await AsyncStorage.setItem(key, value);
     }
     return await AsyncStorage.removeItem(key);
-  } catch (e) {
+  } catch {
     const result: AppError = {
-      errorData: e,
-      errorMessage: null,
+      errorData: null,
+      errorMessage: 'unexpected error',
     };
     return Promise.reject(result);
   }
@@ -45,10 +45,10 @@ export const getObjectData = async <T>(key: string): Promise<T> => {
     }
     const result: AppError = { errorMessage: 'empty data', errorData: null };
     return Promise.reject(result);
-  } catch (e) {
+  } catch {
     const result: AppError = {
-      errorData: e,
-      errorMessage: null,
+      errorData: null,
+      errorMessage: 'unexpected error',
     };
     return Promise.reject(result);
   }
@@ -64,10 +64,10 @@ export const setObjectData = async (
       return await AsyncStorage.setItem(key, json);
     }
     return await AsyncStorage.removeItem(key);
-  } catch (e) {
+  } catch {
     const result: AppError = {
-      errorData: e,
-      errorMessage: null,
+      errorData: null,
+      errorMessage: 'unexpected error',
     };
     return Promise.reject(result);
   }

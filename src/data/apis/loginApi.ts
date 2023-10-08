@@ -1,7 +1,8 @@
-import { PostRequest, Request } from '@src/data/apis/client';
+import PostRequest from '@src/data/apis/common/postRequest';
+import RequestPayload from '@src/data/apis/common/requestPayload';
 import AppError from '@src/types/appError';
 
-export interface LoginRequest extends Request {
+export interface LoginRequest extends RequestPayload {
   body: {
     email: string;
     password: string;

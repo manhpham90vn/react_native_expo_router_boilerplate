@@ -1,7 +1,7 @@
 import Configs from '@constants/configs';
 import createSagaMiddleware from '@redux-saga/core';
 import { configureStore, Middleware, Store } from '@reduxjs/toolkit';
-import { injectStore } from '@src/data/apis/client';
+import { injectStore } from '@src/data/apis/common/client';
 import persistedReducer from '@src/redux/rootReducer';
 import rootSaga from '@src/redux/rootSaga';
 import {

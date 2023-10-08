@@ -1,7 +1,8 @@
-import { GetRequest, Request } from '@src/data/apis/client';
+import GetRequest from '@src/data/apis/common/getRequest';
+import RequestPayload from '@src/data/apis/common/requestPayload';
 import AppError from '@src/types/appError';
 
-export interface ListRequest extends Request {
+export interface ListRequest extends RequestPayload {
   queryParameters: {
     page: number;
     sort: string;

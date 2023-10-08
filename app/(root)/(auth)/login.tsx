@@ -10,8 +10,8 @@ import { useAppDispatch, useAppSelector } from '@src/redux/hooks';
 import {
   authAction,
   errorSelector,
+  isLoginSelector,
   loadingSelector,
-  tokenSelector,
 } from '@src/redux/slices/authSlice';
 import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
@@ -23,7 +23,7 @@ const Login = () => {
   const [password, setPassword] = useState('pwd12345');
   const loading = useAppSelector(loadingSelector);
   const dispatch = useAppDispatch();
-  const token = useAppSelector(tokenSelector);
+  const isLogin = useAppSelector(isLoginSelector);
   const locate = useLocate();
   const error = useAppSelector(errorSelector);
 
@@ -54,10 +54,10 @@ const Login = () => {
   }, [error]);
 
   useEffect(() => {
-    if (token) {
+    if (isLogin) {
       router.replace('(app)');
     }
-  }, [token]);
+  }, [isLogin]);
 
   return (
     <>

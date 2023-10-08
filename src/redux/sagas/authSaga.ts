@@ -9,7 +9,7 @@ function* Login(action: PayloadAction<LoginRequest>) {
   try {
     const response: LoginResponse = yield call(LoginApi, action.payload);
     yield call(setToken, response);
-    yield put(authAction.loginSuccess(response));
+    yield put(authAction.loginSuccess());
   } catch (error) {
     yield put(authAction.loginError(error as AppError));
   }
@@ -17,8 +17,10 @@ function* Login(action: PayloadAction<LoginRequest>) {
 
 function* GetAuth() {
   try {
-    const result: LoginResponse = yield call(getToken);
-    yield put(authAction.checkInitAppSuccess(result));
+    const response: LoginResponse = yield call(getToken);
+    if (response.token && response.refreshToken) {
+      yield put(authAction.checkInitAppSuccess());
+    }
   } catch (e) {
     yield put(authAction.checkInitAppError(e as AppError));
   }

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LoginRequest, LoginResponse } from '@src/data/apis/loginApi';
+import { LoginRequest } from '@src/data/apis/loginApi';
 import { RootState } from '@src/redux/store';
 import AppData from '@src/types/appData';
 import AppError from '@src/types/appError';
 import AppLoading from '@src/types/appLoading';
 
-interface AuthState extends AppLoading, AppError, AppData<LoginResponse> {}
+interface AuthState extends AppLoading, AppError, AppData<boolean> {}
 
 const initialState: AuthState = {
   isLoading: false,
@@ -21,16 +21,9 @@ const authSlice = createSlice({
     checkInitApp: (state: AuthState) => {
       state.isLoading = true;
     },
-    checkInitAppSuccess: (
-      state: AuthState,
-      action: PayloadAction<LoginResponse>,
-    ) => {
+    checkInitAppSuccess: (state: AuthState) => {
       state.isLoading = false;
-      state.data = {
-        ...state.data,
-        token: action.payload.token,
-        refreshToken: action.payload.refreshToken,
-      };
+      state.data = true;
     },
     checkInitAppError: (state: AuthState, action: PayloadAction<AppError>) => {
       state.isLoading = false;
@@ -38,13 +31,9 @@ const authSlice = createSlice({
     login: (state: AuthState, action: PayloadAction<LoginRequest>) => {
       state.isLoading = true;
     },
-    loginSuccess: (state: AuthState, action: PayloadAction<LoginResponse>) => {
+    loginSuccess: (state: AuthState) => {
       state.isLoading = false;
-      state.data = {
-        ...state.data,
-        token: action.payload.token,
-        refreshToken: action.payload.refreshToken,
-      };
+      state.data = true;
     },
     loginError: (state: AuthState, action: PayloadAction<AppError>) => {
       state.isLoading = false;
@@ -59,9 +48,7 @@ const authSlice = createSlice({
 });
 
 export const loadingSelector = (state: RootState) => state.auth.isLoading;
-export const tokenSelector = (state: RootState) => state.auth.data?.token;
-export const refreshTokenSelector = (state: RootState) =>
-  state.auth.data?.refreshToken;
+export const isLoginSelector = (state: RootState) => state.auth.data;
 export const errorSelector = (state: RootState) => state.auth.errorMessage;
 export const authAction = authSlice.actions;
 export const authReducer = authSlice.reducer;

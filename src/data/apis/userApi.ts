@@ -1,4 +1,4 @@
-import { GetRequest } from '@src/data/apis/client';
+import GetRequest from '@src/data/apis/common/getRequest';
 import AppError from '@src/types/appError';
 
 export interface UserResponse {
