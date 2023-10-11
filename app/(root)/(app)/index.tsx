@@ -1,8 +1,8 @@
 import Text from '@src/components/common/text';
 import View from '@src/components/common/view';
 import Loading from '@src/components/loading';
+import i18n from '@src/hooks/i18n';
 import useDarkMode from '@src/hooks/useDarkMode';
-import { useLocate } from '@src/hooks/useLocate';
 import useTheme from '@src/hooks/useTheme';
 import { useAppDispatch, useAppSelector } from '@src/redux/hooks';
 import { appAction } from '@src/redux/slices/appSlice';
@@ -25,7 +25,6 @@ const Tab1 = () => {
   const useMode = useDarkMode();
   const backgroundColor = useTheme('primary');
   const color = useTheme('text');
-  const locate = useLocate();
 
   const handleReload = () => {
     dispatch(
@@ -74,13 +73,13 @@ const Tab1 = () => {
             <View style={{ flexDirection: 'row' }}>
               <TouchableOpacity onPress={handleReload}>
                 <Text fontFamily='MontserratBold' color='text'>
-                  {locate.reload}
+                  {i18n.t('reload')}
                 </Text>
               </TouchableOpacity>
               <Text>{'  '}</Text>
               <TouchableOpacity onPress={toggleTheme}>
                 <Text fontFamily='MontserratBold' color='text'>
-                  {locate.changeTheme}
+                  {i18n.t('changeTheme')}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -88,7 +87,7 @@ const Tab1 = () => {
           headerRight: () => (
             <TouchableOpacity onPress={handleLogout}>
               <Text fontFamily='MontserratBold' color='text'>
-                {locate.logout}
+                {i18n.t('logout')}
               </Text>
             </TouchableOpacity>
           ),
@@ -101,7 +100,7 @@ const Tab1 = () => {
           style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
           <Text color='text'>
-            {locate.total((responseList?.array?.length ?? 0).toString())}
+            {i18n.t('total', { total: responseList?.array?.length ?? 0 })}
           </Text>
         </View>
       )}

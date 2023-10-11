@@ -12,7 +12,11 @@
       "logout": "Logout",
       "reload": "Reload",
       "changeTheme": "Theme",
-      "total": "Total %{total}"
+      "total": "Total %{total}",
+      "email_required": "Email Address is Required",
+      "email_valid": "Please enter valid email",
+      "password_min": "Password must be at least %{min} characters",
+      "password_required": "Password is required"
     },
     "vi": {
       "login": "Đăng nhập",
@@ -26,7 +30,11 @@
       "logout": "Đăng xuất",
       "reload": "Tải lại",
       "changeTheme": "Đổi theme",
-      "total": "Tổng %{total}"
+      "total": "Tổng %{total}",
+      "email_required": "Email là bắt buộc",
+      "email_valid": "Định dạng email không đúng",
+      "password_min": "Mật khẩu tối thiểu %{min} ký tự",
+      "password_required": "Mật khẩu là bắt buộc"
     }
   }
 }

@@ -1,12 +1,11 @@
 import View from '@src/components/common/view';
 import PrimaryButton from '@src/components/primarybutton';
-import { useLocate } from '@src/hooks/useLocate';
+import i18n from '@src/hooks/i18n';
 import { router } from 'expo-router';
 import { useWindowDimensions } from 'react-native';
 
 const Welcome = () => {
   const { height } = useWindowDimensions();
-  const locate = useLocate();
 
   const handleSignIn = async () => {
     router.push('login');
@@ -33,7 +32,7 @@ const Welcome = () => {
             alignItems: 'center',
             borderRadius: 25,
           }}
-          text={locate.login}
+          text={i18n.t('login')}
           onPress={handleSignIn}
         />
 
@@ -45,7 +44,7 @@ const Welcome = () => {
             alignItems: 'center',
             borderRadius: 25,
           }}
-          text={locate.register}
+          text={i18n.t('register')}
           onPress={handleSignUp}
         />
       </View>

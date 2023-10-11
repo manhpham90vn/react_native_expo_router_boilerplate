@@ -5,7 +5,7 @@ import Loading from '@src/components/loading';
 import PrimaryButton from '@src/components/primarybutton';
 import PrimaryEditText from '@src/components/primaryedittext';
 import { LoginRequest } from '@src/data/apis/loginApi';
-import { useLocate } from '@src/hooks/useLocate';
+import i18n from '@src/hooks/i18n';
 import { useAppDispatch, useAppSelector } from '@src/redux/hooks';
 import {
   authAction,
@@ -24,7 +24,6 @@ const Login = () => {
   const loading = useAppSelector(loadingSelector);
   const dispatch = useAppDispatch();
   const isLogin = useAppSelector(isLoginSelector);
-  const locate = useLocate();
   const error = useAppSelector(errorSelector);
   const initData = {
     email: '',
@@ -88,7 +87,7 @@ const Login = () => {
                       paddingHorizontal: 20,
                     }}
                     value={values.email}
-                    placeholder={locate.email}
+                    placeholder={i18n.t('email')}
                     onChangeText={handleChange('email')}
                     keyboardType='email-address'
                   />
@@ -105,7 +104,7 @@ const Login = () => {
                       marginTop: 20,
                     }}
                     value={values.password}
-                    placeholder={locate.password}
+                    placeholder={i18n.t('password')}
                     onChangeText={handleChange('password')}
                     secureTextEntry
                   />
@@ -122,7 +121,7 @@ const Login = () => {
                       alignItems: 'center',
                       borderRadius: 25,
                     }}
-                    text={locate.login}
+                    text={i18n.t('login')}
                     onPress={handleSubmit}
                   />
                 </>
@@ -137,7 +136,7 @@ const Login = () => {
               onPress={handleForgotPassword}
             >
               <Text color='text' style={{ textAlign: 'center' }}>
-                {locate.forgot}
+                {i18n.t('forgot')}
               </Text>
             </TouchableOpacity>
 
@@ -148,11 +147,11 @@ const Login = () => {
                 justifyContent: 'center',
               }}
             >
-              <Text color='text'>{locate.dont_have_account}</Text>
+              <Text color='text'>{i18n.t('dont_have_account')}</Text>
               <Text>{'   '}</Text>
               <TouchableOpacity onPress={handleSignUp}>
                 <Text color='text' fontFamily='MontserratBold'>
-                  {locate.register}
+                  {i18n.t('register')}
                 </Text>
               </TouchableOpacity>
             </View>

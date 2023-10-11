@@ -1,12 +1,11 @@
 import View from '@src/components/common/view';
 import PrimaryButton from '@src/components/primarybutton';
 import PrimaryEditText from '@src/components/primaryedittext';
-import { useLocate } from '@src/hooks/useLocate';
+import i18n from '@src/hooks/i18n';
 import { useWindowDimensions } from 'react-native';
 
 const Register = () => {
   const { height } = useWindowDimensions();
-  const locate = useLocate();
 
   const handleRegister = () => {
     console.log('register');
@@ -24,7 +23,7 @@ const Register = () => {
             paddingHorizontal: 20,
           }}
           keyboardType='email-address'
-          placeholder={locate.email}
+          placeholder={i18n.t('email')}
         />
 
         <PrimaryEditText
@@ -35,7 +34,7 @@ const Register = () => {
             marginTop: 10,
           }}
           secureTextEntry
-          placeholder={locate.password}
+          placeholder={i18n.t('password')}
         />
 
         <PrimaryEditText
@@ -46,7 +45,7 @@ const Register = () => {
             marginTop: 10,
           }}
           secureTextEntry
-          placeholder={locate.confirm_password}
+          placeholder={i18n.t('confirm_password')}
         />
 
         <PrimaryButton
@@ -58,7 +57,7 @@ const Register = () => {
             borderRadius: 25,
           }}
           onPress={handleRegister}
-          text={locate.register}
+          text={i18n.t('register')}
         />
       </View>
     </View>

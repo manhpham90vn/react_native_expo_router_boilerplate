@@ -1,12 +1,11 @@
 import View from '@src/components/common/view';
 import PrimaryButton from '@src/components/primarybutton';
 import PrimaryEditText from '@src/components/primaryedittext';
-import { useLocate } from '@src/hooks/useLocate';
+import i18n from '@src/hooks/i18n';
 import { useWindowDimensions } from 'react-native';
 
 const Forgot = () => {
   const { height } = useWindowDimensions();
-  const locate = useLocate();
   const handleForgot = () => {
     console.log('reset password');
   };
@@ -27,7 +26,7 @@ const Forgot = () => {
             borderRadius: 25,
             paddingHorizontal: 20,
           }}
-          placeholder={locate.email}
+          placeholder={i18n.t('email')}
         />
 
         <PrimaryButton
@@ -39,7 +38,7 @@ const Forgot = () => {
             borderRadius: 25,
           }}
           onPress={handleForgot}
-          text={locate.send_mail}
+          text={i18n.t('send_mail')}
         />
       </View>
     </View>
