@@ -4,12 +4,11 @@ import RequestResponse from '@src/data/apis/common/requestResponse';
 import AppError from '@src/types/appError';
 import axios from 'axios/index';
 
-const GetRequest = async <T>(
-  path: string,
-  requestData: RequestPayload,
+const GetRequest = async <R, T>(
+  requestData: RequestPayload<R>,
 ): Promise<RequestResponse<T>> => {
   try {
-    const response = await client.get<T>(path, {
+    const response = await client.get<T>(requestData.path, {
       params: requestData.queryParameters,
       headers: requestData.headers,
     });

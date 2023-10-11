@@ -4,13 +4,12 @@ import RequestResponse from '@src/data/apis/common/requestResponse';
 import AppError from '@src/types/appError';
 import axios from 'axios/index';
 
-const PostRequest = async <T>(
-  path: string,
-  requestData: RequestPayload,
+const PostRequest = async <R, T>(
+  requestData: RequestPayload<R>,
 ): Promise<RequestResponse<T>> => {
   try {
     const response = await client.post<T>(
-      path,
+      requestData.path,
       { ...requestData.body },
       { headers: requestData.headers },
     );

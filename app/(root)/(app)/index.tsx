@@ -30,10 +30,8 @@ const Tab1 = () => {
   const handleReload = () => {
     dispatch(
       homeAction.init({
-        queryParameters: {
-          page: 1,
-          sort: 'ascending',
-        },
+        page: 1,
+        sort: 'ascending',
       }),
     );
   };
@@ -52,10 +50,8 @@ const Tab1 = () => {
   useEffect(() => {
     dispatch(
       homeAction.init({
-        queryParameters: {
-          page: 1,
-          sort: 'ascending',
-        },
+        page: 1,
+        sort: 'ascending',
       }),
     );
   }, []);

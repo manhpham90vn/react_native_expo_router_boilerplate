@@ -1,12 +1,9 @@
 import Configs from '@constants/configs';
-import RequestPayload from '@src/data/apis/common/requestPayload';
 import AppError from '@src/types/appError';
 import axios from 'axios';
 
-export interface RefreshTokenRequest extends RequestPayload {
-  body: {
-    token: string;
-  };
+export interface RefreshTokenRequest {
+  token: string;
 }
 
 export interface RefreshTokenResponse {
@@ -18,7 +15,7 @@ export const RefreshTokenApi = async (
 ): Promise<RefreshTokenResponse> => {
   try {
     const baseUrl = Configs.BASE_URL + 'refreshToken';
-    const response = await axios.post(baseUrl, { ...request.body });
+    const response = await axios.post(baseUrl, { ...request });
     if (response.data && response.data.token) {
       return Promise.resolve(response.data);
     }

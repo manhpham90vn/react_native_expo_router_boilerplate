@@ -1,4 +1,5 @@
 import GetRequest from '@src/data/apis/common/getRequest';
+import RequestPayload from '@src/data/apis/common/requestPayload';
 import AppError from '@src/types/appError';
 
 export interface UserResponse {
@@ -9,7 +10,10 @@ export interface UserResponse {
 
 export const UserApi = async (): Promise<UserResponse> => {
   try {
-    const response = await GetRequest<UserResponse>('user', {});
+    const payload: RequestPayload<any> = {
+      path: 'user',
+    };
+    const response = await GetRequest<null, UserResponse>(payload);
     if (response.data) {
       return Promise.resolve(response.data);
     }

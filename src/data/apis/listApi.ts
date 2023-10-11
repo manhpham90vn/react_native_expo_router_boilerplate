@@ -2,11 +2,9 @@ import GetRequest from '@src/data/apis/common/getRequest';
 import RequestPayload from '@src/data/apis/common/requestPayload';
 import AppError from '@src/types/appError';
 
-export interface ListRequest extends RequestPayload {
-  queryParameters: {
-    page: number;
-    sort: string;
-  };
+export interface ListRequest {
+  page: number;
+  sort: string;
 }
 
 export interface ListResponse {
@@ -23,7 +21,11 @@ export interface UserListResponse {
 
 export const ListApi = async (request: ListRequest): Promise<ListResponse> => {
   try {
-    const response = await GetRequest<ListResponse>('paging', request);
+    const payload: RequestPayload<any> = {
+      queryParameters: request,
+      path: 'paging',
+    };
+    const response = await GetRequest<ListRequest, ListResponse>(payload);
     if (response.data) {
       return Promise.resolve(response.data);
     }

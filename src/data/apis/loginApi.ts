@@ -2,11 +2,9 @@ import PostRequest from '@src/data/apis/common/postRequest';
 import RequestPayload from '@src/data/apis/common/requestPayload';
 import AppError from '@src/types/appError';
 
-export interface LoginRequest extends RequestPayload {
-  body: {
-    email: string;
-    password: string;
-  };
+export interface LoginRequest {
+  email: string;
+  password: string;
 }
 
 export interface LoginResponse {
@@ -18,7 +16,11 @@ export const LoginApi = async (
   request: LoginRequest,
 ): Promise<LoginResponse> => {
   try {
-    const response = await PostRequest<LoginResponse>('login', request);
+    const payload: RequestPayload<LoginRequest> = {
+      body: request,
+      path: 'login',
+    };
+    const response = await PostRequest<LoginRequest, LoginResponse>(payload);
     if (response.data && response.data.token && response.data.refreshToken) {
       return Promise.resolve(response.data);
     }

@@ -13,25 +13,26 @@ import {
   isLoginSelector,
   loadingSelector,
 } from '@src/redux/slices/authSlice';
+import loginValidationSchema from '@src/validation/loginValidationSchema';
 import { router } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { Formik } from 'formik';
+import { useEffect } from 'react';
 import { Alert, useWindowDimensions } from 'react-native';
 
 const Login = () => {
   const { height } = useWindowDimensions();
-  const [email, setEmail] = useState('admin@admin.com');
-  const [password, setPassword] = useState('pwd12345');
   const loading = useAppSelector(loadingSelector);
   const dispatch = useAppDispatch();
   const isLogin = useAppSelector(isLoginSelector);
   const locate = useLocate();
   const error = useAppSelector(errorSelector);
+  const initData = {
+    email: '',
+    password: '',
+  };
 
-  const handleSignIn = () => {
-    const payload: LoginRequest = {
-      body: { email, password },
-    };
-    dispatch(authAction.login(payload));
+  const handleSignIn = (data: LoginRequest) => {
+    dispatch(authAction.login(data));
   };
 
   const handleForgotPassword = () => {
@@ -73,41 +74,60 @@ const Login = () => {
               marginRight: 20,
             }}
           >
-            <PrimaryEditText
-              style={{
-                height: 50,
-                borderRadius: 25,
-                paddingHorizontal: 20,
-              }}
-              value={email}
-              placeholder={locate.email}
-              onChangeText={setEmail}
-            />
-
-            <PrimaryEditText
-              style={{
-                height: 50,
-                borderRadius: 25,
-                paddingHorizontal: 20,
-                marginTop: 20,
-              }}
-              value={password}
-              placeholder={locate.password}
-              onChangeText={setPassword}
-              secureTextEntry
-            />
-
-            <PrimaryButton
-              style={{
-                marginTop: 20,
-                height: 50,
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 25,
-              }}
-              text={locate.login}
-              onPress={handleSignIn}
-            />
+            <Formik
+              validationSchema={loginValidationSchema}
+              initialValues={initData}
+              onSubmit={(values) => handleSignIn(values)}
+            >
+              {({ handleChange, handleSubmit, values, errors }) => (
+                <>
+                  <PrimaryEditText
+                    style={{
+                      height: 50,
+                      borderRadius: 25,
+                      paddingHorizontal: 20,
+                    }}
+                    value={values.email}
+                    placeholder={locate.email}
+                    onChangeText={handleChange('email')}
+                    keyboardType='email-address'
+                  />
+                  {errors.email && (
+                    <Text style={{ fontSize: 10, color: 'red' }}>
+                      {errors.email}
+                    </Text>
+                  )}
+                  <PrimaryEditText
+                    style={{
+                      height: 50,
+                      borderRadius: 25,
+                      paddingHorizontal: 20,
+                      marginTop: 20,
+                    }}
+                    value={values.password}
+                    placeholder={locate.password}
+                    onChangeText={handleChange('password')}
+                    secureTextEntry
+                  />
+                  {errors.password && (
+                    <Text style={{ fontSize: 10, color: 'red' }}>
+                      {errors.password}
+                    </Text>
+                  )}
+                  <PrimaryButton
+                    style={{
+                      marginTop: 20,
+                      height: 50,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: 25,
+                    }}
+                    text={locate.login}
+                    onPress={handleSubmit}
+                  />
+                </>
+              )}
+            </Formik>
 
             <TouchableOpacity
               style={{
