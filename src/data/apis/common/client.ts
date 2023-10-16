@@ -36,9 +36,7 @@ const RefreshToken = async (error: AxiosError) => {
       try {
         const token = await getToken();
         if (token.refreshToken) {
-          const response = await RefreshTokenApi({
-            body: { token: token.refreshToken },
-          });
+          const response = await RefreshTokenApi({ token: token.refreshToken });
           if (response.token) {
             await setToken({
               token: response.token,

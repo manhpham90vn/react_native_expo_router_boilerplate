@@ -16,7 +16,7 @@ import {
 import loginValidationSchema from '@src/validation/loginValidationSchema';
 import { router } from 'expo-router';
 import { Formik } from 'formik';
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { Alert, useWindowDimensions } from 'react-native';
 
 const Login = () => {
@@ -53,7 +53,7 @@ const Login = () => {
     }
   }, [error]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isLogin) {
       router.replace('(app)');
     }
