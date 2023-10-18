@@ -16,7 +16,7 @@ import {
 import loginValidationSchema from '@src/validation/loginValidationSchema';
 import { router } from 'expo-router';
 import { Formik } from 'formik';
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { Alert, useWindowDimensions } from 'react-native';
 
 const Login = () => {
@@ -25,12 +25,12 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const isLogin = useAppSelector(isLoginSelector);
   const error = useAppSelector(errorSelector);
-  const initData = {
-    email: '',
-    password: '',
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSignIn = (data: LoginRequest) => {
+    setEmail(data.email);
+    setPassword(data.password);
     dispatch(authAction.login(data));
   };
 
@@ -75,7 +75,10 @@ const Login = () => {
           >
             <Formik
               validationSchema={loginValidationSchema}
-              initialValues={initData}
+              initialValues={{
+                email,
+                password,
+              }}
               onSubmit={(values) => handleSignIn(values)}
             >
               {({ handleChange, handleSubmit, values, errors }) => (
