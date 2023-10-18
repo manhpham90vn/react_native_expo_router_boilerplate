@@ -36,3 +36,4 @@ yarn-error.*
 
 # ide
 .idea
+.vscode

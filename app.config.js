@@ -29,6 +29,6 @@ module.exports = {
     scheme: 'react-native-expo-router-boilerplate',
     experiments: {
       tsconfigPaths: true,
-    }
+    },
   },
 };
